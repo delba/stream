@@ -16,7 +16,8 @@ app.use express.static(__dirname + '/public')
 Video = require './models/video'
 
 app.get '/', (req, res) ->
-  videos = Video.find {}, (err, videos) ->
+  videos = Video.find({}).sort('-date').exec (err, videos) ->
+    console.log videos[0]
     res.render 'index',
       videos: videos
 

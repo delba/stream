@@ -15,5 +15,6 @@ schema = new mongoose.Schema
   author_url: String
   provider_name: String
   provider_url: String
+  date: { type: Date, default: Date.now }
 
 module.exports = mongoose.model('Video', schema)
