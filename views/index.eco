@@ -15,5 +15,13 @@
       <% end %>
     </section>
   </ul>
+
+  <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.fitvids.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('body').fitVids();
+    });
+  </script>
   </body>
 </html>

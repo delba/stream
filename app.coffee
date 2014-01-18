@@ -11,6 +11,7 @@ app.engine 'eco', engines.eco
 app.set 'view engine', 'eco'
 
 app.use express.bodyParser()
+app.use express.static(__dirname + '/public')
 
 Video = require './models/video'
 
