@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Viddit</title>
+    <link rel="stylesheet" href="stylesheets/normalize.css" />
   </head>
   <body>
     <form action="/" method="post">
