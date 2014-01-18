@@ -6,7 +6,7 @@
   </head>
   <body>
     <form action="/" method="post">
-      <input type="text" name="url" placeholder="URL" />
+      <input type="text" name="url" placeholder="URL" autofocus />
       <input type="submit" value="Embed!" />
     </form>
 
