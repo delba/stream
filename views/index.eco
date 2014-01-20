@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="stylesheets/normalize.css" />
   </head>
   <body>
-    <form action="/" method="post">
+    <form action="/" method="post" id="new_video">
       <input type="text" name="url" placeholder="URL" autofocus />
       <input type="submit" value="Embed!" />
     </form>
 
-    <section>
+    <section id="videos">
       <% for video in @videos: %>
         <article><%- video.html %></article>
       <% end %>
@@ -19,10 +19,6 @@
 
   <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="javascripts/jquery.fitvids.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('body').fitVids();
-    });
-  </script>
+  <script type="text/javascript" src="javascripts/video.js"></script>
   </body>
 </html>

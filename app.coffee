@@ -42,9 +42,9 @@ app.post '/', (req, res) ->
       author_url: data.author_url
       provider_name: data.provider_name
       provider_url: data.provider_url
-    , (err) ->
+    , (err, video) ->
       throw(err) if err
 
-      res.redirect '/'
+      res.json video.toObject()
 
 app.listen 3000
