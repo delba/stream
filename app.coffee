@@ -17,7 +17,8 @@ Video = require './models/video'
 
 app.get '/', (req, res) ->
   videos = Video.find({}).sort('-date').exec (err, videos) ->
-    console.log videos[0]
+    throw(err) if err
+
     res.render 'index',
       videos: videos
 
@@ -43,6 +44,7 @@ app.post '/', (req, res) ->
       provider_url: data.provider_url
     , (err) ->
       throw(err) if err
+
       res.redirect '/'
 
 app.listen 3000
