@@ -13,6 +13,7 @@
     "oembed-auto": "0.0.3",
     "consolidate": "~0.10.0",
     "eco": "~1.1.0-rc-3",
-    "mongoose": "~3.8.4"
+    "redis": "~0.10.0",
+    "hiredis": "~0.1.16"
   }
 }
