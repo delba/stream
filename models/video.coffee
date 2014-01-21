@@ -1,20 +1,25 @@
-mongoose = require 'mongoose'
-mongoose.connect 'mongodb://localhost/viddit'
+redis  = require 'redis'
+client = redis.createClient()
 
-schema = new mongoose.Schema
-  type: String
-  version: String
-  title: String
-  html: String
-  height: Number
-  width: Number
-  thumbnail_url: String
-  thumbnail_height: Number
-  thumbnail_width: Number
-  author_name: String
-  author_url: String
-  provider_name: String
-  provider_url: String
-  date: { type: Date, default: Date.now }
+class Video
+  @all: (fn) ->
+    client.smembers 'videos', (err, urls) ->
+      fn(err) if err
 
-module.exports = mongoose.model('Video', schema)
+      multi = client.multi()
+
+      for url in urls
+        multi.hgetall "videos:#{url}"
+
+      multi.exec (err, videos) ->
+        fn(null, videos)
+
+  @create: (data, fn) ->
+    client.hmset "videos:#{data._url}", data, (err, status) ->
+      fn(err) if err
+
+      if status is 'OK'
+        client.sadd 'videos', data._url, redis.print
+        fn(null, data)
+
+module.exports = Video
