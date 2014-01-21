@@ -2,13 +2,12 @@
 <html>
   <head>
     <title>Viddit</title>
-    <link rel="stylesheet" href="stylesheets/normalize.css" />
     <link rel="stylesheet" href="stylesheets/video.css" />
   </head>
   <body>
     <form action="/" method="post" id="new_video">
-      <input type="text" name="url" placeholder="URL" autofocus />
-      <input type="submit" value="Embed!" />
+      <input type="text" name="url" placeholder="Enter an url&hellip;" autofocus />
+      <input type="submit" value="Submit" />
     </form>
 
     <section id="videos">
