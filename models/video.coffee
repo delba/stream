@@ -21,6 +21,11 @@ class Video
       multi.exec (err, videos) ->
         fn(null, videos)
 
+
+  @find: (id, fn) ->
+    client.hgetall "video:#{id}", (err, video) ->
+      if err then fn(err) else fn(null, video)
+
   @find_or_create_by_url: (url, fn) ->
     client.sismember 'video:urls', url, (err, exists) =>
       if exists

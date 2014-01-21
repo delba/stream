@@ -18,8 +18,9 @@ if 'development' is app.get('env')
 
 videos = require './controllers/videos'
 
-app.get  '/', videos.index
-app.post '/', videos.create
+app.get  '/',    videos.index
+app.post '/',    videos.create
+app.get  '/:id', videos.show
 
 app.listen app.get('port'), ->
   console.log "Viddit listening on port #{app.get('port')}!"

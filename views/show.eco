@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Viddit</title>
+    <link rel="stylesheet" href="stylesheets/normalize.css" />
+    <link rel="stylesheet" href="stylesheets/video.css" />
+  </head>
+  <body>
+    <form action="/" method="post" id="new_video">
+      <input type="text" name="url" placeholder="URL" autofocus />
+      <input type="submit" value="Embed!" />
+    </form>
+
+    <section id="videos">
+      <article>
+        <%- @video.html %>
+      </article>
+    </section>
+
+  <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="javascripts/video.js"></script>
+  </body>
+</html>

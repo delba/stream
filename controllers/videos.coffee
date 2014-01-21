@@ -13,3 +13,10 @@ exports.create = (req, res) ->
   Video.find_or_create_by_url url, (err, data) ->
     throw err if err
     res.json data
+
+exports.show = (req, res) ->
+  id = req.params.id
+
+  Video.find req.params.id, (err, video) ->
+    res.render 'show',
+      video: video
