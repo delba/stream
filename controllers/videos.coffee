@@ -1,5 +1,3 @@
-oembed = require 'oembed-auto'
-
 Video = require '../models/video'
 
 exports.index = (req, res) ->
@@ -12,10 +10,6 @@ exports.index = (req, res) ->
 exports.create = (req, res) ->
   url = req.body.url
 
-  oembed url, (err, data) ->
-    throw(err) if err
-
-    data._url = url
-
-    Video.create data, (err, data) ->
-      res.json data
+  Video.find_or_create_by_url url, (err, data) ->
+    throw err if err
+    res.json data
