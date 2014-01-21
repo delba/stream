@@ -3,6 +3,7 @@
   <head>
     <title>Viddit</title>
     <link rel="stylesheet" href="stylesheets/normalize.css" />
+    <link rel="stylesheet" href="stylesheets/video.css" />
   </head>
   <body>
     <form action="/" method="post" id="new_video">
@@ -12,10 +13,13 @@
 
     <section id="videos">
       <% for video in @videos: %>
-        <article><%- video.html %></article>
+        <article>
+          <a href="/<%= video.id %>">
+            <img src="<%= video.thumbnail_url %>" alt="<%= video.title %>"/>
+          </a>
+        </article>
       <% end %>
     </section>
-  </ul>
 
   <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="javascripts/jquery.fitvids.js"></script>
