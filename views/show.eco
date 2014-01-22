@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Viddit</title>
-    <link rel="stylesheet" href="stylesheets/video.css" />
+    <link rel="stylesheet" href="/stylesheets/video.css" />
   </head>
   <body>
     <form action="/" method="post" id="new_video">
@@ -16,8 +16,8 @@
       </article>
     </section>
 
-  <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript" src="javascripts/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.fitvids.js"></script>
   <script type="text/javascript">
     $('#videos').fitVids();
   </script>
