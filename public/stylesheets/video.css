@@ -1,3 +1,64 @@
+body {
+  font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  padding: 0 5.555%;
+  margin: 0 auto;
+}
+
+header {
+  line-height: 48px;
+  padding: 11px 0;
+  margin: 8px 0;
+}
+
+header:before, header:after {
+  content: '';
+  display: table;
+}
+
+header:after {
+  clear: both;
+}
+
+header {
+  *zoom: 1;
+}
+
+header h1 {
+  float: left;
+  margin: 0;
+  text-transform: lowercase;
+  font-size: 1.2em;
+}
+
+header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header form {
+  float: right;
+}
+
+#videos a {
+  display: block;
+}
+
+#videos article {
+  margin-bottom: 1.5em;
+}
+
 #videos img {
+  width: 100%;
   max-width: 100%;
+}
+
+input {
+  font: inherit;
+  line-height: 1.5em;
+}
+
+input[name="url"]:focus {
+  outline: none;
 }

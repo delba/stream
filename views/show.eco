@@ -5,10 +5,13 @@
     <link rel="stylesheet" href="/stylesheets/video.css" />
   </head>
   <body>
-    <form action="/" method="post" id="new_video">
-      <input type="text" name="url" placeholder="Enter an url&hellip;" autofocus />
-      <input type="submit" value="Submit" />
-    </form>
+    <header>
+      <h1><a href="/">Home</a></h1>
+      <form action="/" method="post" id="new_video">
+        <input type="text" name="url" placeholder="Enter an url&hellip;" autofocus />
+        <input type="submit" value="Submit" />
+      </form>
+    </header>
 
     <section id="videos">
       <article>
