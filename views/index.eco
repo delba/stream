@@ -18,6 +18,7 @@
         <article>
           <a href="/<%= video.id %>">
             <img src="<%= video.thumbnail_url %>" alt="<%= video.title %>"/>
+            <h2><span><%= video.title %></span></h2>
           </a>
         </article>
       <% end %>
@@ -25,5 +26,10 @@
 
   <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="/javascripts/jquery.fitvids.js"></script>
+  <script type="text/javascript">
+    $('#videos a').hover(function() {
+      $(this).find('h2').toggle();
+    });
+  </script>
   </body>
 </html>
