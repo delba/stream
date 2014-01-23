@@ -17,6 +17,16 @@ class User
       return callback(err) if err
       callback(null, new User(user))
 
+  @authenticate: (name, password, callback) ->
+    @getByName name, (err, user) ->
+      return callback(err) if err
+      return callback() unless user.id
+      bcrypt.hash password, user.salt, (err, hash) ->
+        return callback(err) if err
+        if hash is user.password
+          return callback(null, user)
+        callback()
+
   constructor: (attributes) ->
     for key, value of attributes
       this[key] = value
@@ -47,3 +57,5 @@ class User
         return callback(err) if err
         @password = hash
         callback()
+
+module.exports = User
