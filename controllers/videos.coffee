@@ -4,7 +4,7 @@ exports.index = (req, res) ->
   videos = Video.all (err, videos) ->
     throw err if err
 
-    res.render 'index', { videos }
+    res.render 'videos/index', { videos }
 
 exports.create = (req, res) ->
   url = req.body.url
@@ -20,4 +20,4 @@ exports.show = (req, res) ->
   Video.find req.params.id, (err, video) ->
     throw err if err
 
-    res.render 'show', { video }
+    res.render 'videos/show', { video }
