@@ -18,10 +18,13 @@ if 'development' is app.get('env')
   app.use express.errorHandler()
 
 videos = require './controllers/videos'
+users  = require './controllers/users'
 
-app.get  '/',    videos.index
-app.post '/',    videos.create
-app.get  '/:id', videos.show
+app.get  '/',         videos.index
+app.post '/',         videos.create
+app.get  '/register', users.new
+app.post '/register', users.create
+app.get  '/:id',      videos.show
 
 app.listen app.get('port'), ->
   console.log "Viddit listening on port #{app.get('port')}!"
