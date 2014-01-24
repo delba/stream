@@ -7,6 +7,17 @@ exports.create = (req, res) ->
   username = req.body.username
   password = req.body.password
 
-  console.log username, password
+  User.getByName username, (err, user) ->
+    return next(err) if err
 
-  res.redirect '/'
+    if user.id
+      res.render 'users/new',
+        error: 'Username already taken'
+    else
+      user = new User
+        name: username
+        password: password
+      user.save (err) ->
+        return next(err) if err
+        req.session.uid = user.id
+        res.redirect '/register'
