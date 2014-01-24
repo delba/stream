@@ -97,3 +97,12 @@ input {
 input[name="url"]:focus {
   outline: none;
 }
+
+a[href="/login"], a[href="/register"] {
+  color: #39c;
+  text-decoration: none;
+}
+
+a[href="/login"]:hover, a[href="/register"]:hover {
+  color: #036;
+}
