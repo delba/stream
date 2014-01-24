@@ -15,6 +15,7 @@ app.use express.bodyParser()
 app.use express.static(__dirname + '/public')
 app.use express.cookieParser()
 app.use express.session(secret: 'secretpassword123')
+app.use require('./lib/middlewares/current_user')
 
 if 'development' is app.get('env')
   app.use express.errorHandler()
