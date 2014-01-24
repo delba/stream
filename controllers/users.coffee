@@ -19,5 +19,5 @@ exports.create = (req, res) ->
         password: password
       user.save (err) ->
         return next(err) if err
-        req.session.uid = user.id
-        res.redirect '/register'
+        req.session.user_id = user.id
+        res.redirect '/'
