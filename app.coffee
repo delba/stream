@@ -20,13 +20,17 @@ app.use require('./lib/middlewares/current_user')
 if 'development' is app.get('env')
   app.use express.errorHandler()
 
-videos = require './controllers/videos'
-users  = require './controllers/users'
+videos   = require './controllers/videos'
+users    = require './controllers/users'
+sessions = require './controllers/sessions'
 
 app.get  '/',         videos.index
 app.post '/',         videos.create
 app.get  '/register', users.new
 app.post '/register', users.create
+app.get  '/login',    sessions.new
+app.post '/login',    sessions.create
+app.get  '/logout',   sessions.destroy
 app.get  '/:id',      videos.show
 
 app.listen app.get('port'), ->
