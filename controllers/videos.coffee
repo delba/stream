@@ -6,6 +6,12 @@ exports.index = (req, res) ->
 
     res.render 'videos/index', { videos }
 
+exports.new = (req, res) ->
+  if req.current_user
+    res.render 'videos/new'
+  else
+    res.redirect 'login'
+
 exports.create = (req, res) ->
   url = req.body.url
 

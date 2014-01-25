@@ -30,6 +30,7 @@ sessions = require './controllers/sessions'
 
 app.get  '/',         videos.index
 app.post '/',         videos.create
+app.get  '/new',      videos.new
 app.get  '/register', users.new
 app.post '/register', users.create
 app.get  '/login',    sessions.new

@@ -10,20 +10,20 @@
       <% if @current_user: %>
         <p class="user"><a href="/new">submit a video</a>&emsp;<a href="/logout">logout</a></p>
       <% else: %>
-        <p class="user"><a href="/login">login</a> / <a href="/register">register</a></p>
+        <p class="user"><a href="/login">login</a>&emsp;<a href="/register">register</a></p>
       <% end %>
     </header>
 
-    <section id="videos">
-      <article>
-        <%- @video.html %>
-      </article>
+    <section>
+      <h2>Submit a Video</h2>
+      <form action="/" method="post" id="new_video">
+        <input type="hidden" name="_csrf" value='<%= @_csrf %>' />
+        <input type="text" name="url" placeholder="Enter an url&hellip;" autofocus />
+        <input type="submit" value="Submit" />
+      </form>
     </section>
 
   <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="/javascripts/jquery.fitvids.js"></script>
-  <script type="text/javascript">
-    $('#videos').fitVids();
-  </script>
   </body>
 </html>
