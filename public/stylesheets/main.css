@@ -112,3 +112,7 @@ form a[href="/login"], form a[href="/register"] {
 form a[href="/login"]:hover, form a[href="/register"]:hover {
   text-decoration: underline;
 }
+
+.selected {
+  opacity: 0.2;
+}

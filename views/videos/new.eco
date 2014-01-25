@@ -9,7 +9,9 @@
       <h1><a href="/">Home</a></h1>
       <p class="user">
         <% if @current_user: %>
-          <a href="/">all videos</a>&emsp;<a href="/logout">logout</a>
+          <a href="/">all videos</a>&emsp;
+          <a href="/new" class="selected">submit a video</a>&emsp;
+          <a href="/logout">logout</a>
         <% else: %>
           <a href="/login">login</a>&emsp;<a href="/register">register</a>
         <% end %>

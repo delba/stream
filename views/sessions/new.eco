@@ -7,7 +7,11 @@
   <body>
     <header>
       <h1><a href="/">Home</a></h1>
-      <p class="user"><a href="/">all videos</a>&emsp;<a href="/register">register</a></p>
+      <p class="user">
+        <a href="/">all videos</a>&emsp;
+        <a href="/register">register</a>&emsp;
+        <a href="/login" class="selected">login</a>
+      </p>
     </header>
 
     <% if @error: %>
