@@ -15,6 +15,10 @@ app.use express.bodyParser()
 app.use express.static(__dirname + '/public')
 app.use express.cookieParser()
 app.use express.session(secret: 'secretpassword123')
+app.use express.csrf()
+app.use (req, res, next) ->
+  res.locals._csrf = req.csrfToken()
+  next()
 app.use require('./lib/middlewares/current_user')
 
 if 'development' is app.get('env')

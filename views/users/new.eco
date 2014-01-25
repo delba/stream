@@ -16,6 +16,7 @@
     <section>
       <h2>Register</h2>
       <form action="/register" method="post">
+        <input type="hidden" name="_csrf" value='<%= @_csrf %>' />
         <p><input type="text" name="username" placeholder="Username" autofocus /></p>
         <p><input type="password" name="password" placeholder="Password" /></p>
         <p><input type="submit" name="submit" value="Register" /> or <a href="/login">login</a></p>
