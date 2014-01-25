@@ -17,7 +17,7 @@
           <a href="/logout">logout</a>
         </div>
       <% else: %>
-        <p class="user"><a href="/login">login</a> / <a href="/register">register</a></p>
+        <p class="user"><a href="/login">login</a>&emsp;<a href="/register">register</a></p>
       <% end %>
     </header>
 
