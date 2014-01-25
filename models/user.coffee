@@ -4,58 +4,58 @@ redis  = require 'redis'
 client = redis.createClient()
 
 class User
-  @getByName: (name, callback) ->
+  @getByName: (name, cb) ->
     @getId name, (err, id) =>
-      return callback(err) if err
-      @get id, callback
+      return cb(err) if err
+      @get id, cb
 
-  @getId: (name, callback) ->
-    client.get "users:id:#{name}", callback
+  @getId: (name, cb) ->
+    client.get "users:id:#{name}", cb
 
-  @get: (id, callback) ->
+  @get: (id, cb) ->
     client.hgetall "users:#{id}", (err, user) ->
-      return callback(err) if err
-      callback(null, new User(user))
+      return cb(err) if err
+      cb(null, new User(user))
 
-  @authenticate: (name, password, callback) ->
+  @authenticate: (name, password, cb) ->
     @getByName name, (err, user) ->
-      return callback(err) if err
-      return callback() unless user.id
+      return cb(err) if err
+      return cb() unless user.id
       bcrypt.hash password, user.salt, (err, hash) ->
-        return callback(err) if err
+        return cb(err) if err
         if hash is user.password
-          return callback(null, user)
-        callback()
+          return cb(null, user)
+        cb()
 
   constructor: (attributes) ->
     for key, value of attributes
       this[key] = value
 
-  save: (callback) ->
+  save: (cb) ->
     if @id
-      @update(callback)
+      @update(cb)
     else
       client.incr 'users:uid', (err, id) =>
-        return callback(err) if err
+        return cb(err) if err
         @id = id
         @hashPassword (err) =>
-          return callback(err) if err
-          @update(callback)
+          return cb(err) if err
+          @update(cb)
 
-  update: (callback) ->
+  update: (cb) ->
     client.set "users:id:#{@name}", @id, (err, res) =>
-      return callback(err) if err
+      return cb(err) if err
       client.hmset "users:#{@id}", this, (err, res) =>
-        return callback(err) if err
-        callback(null, this)
+        return cb(err) if err
+        cb(null, this)
 
-  hashPassword: (callback) ->
+  hashPassword: (cb) ->
     bcrypt.genSalt 12, (err, salt) =>
-      return callback(err) if err
+      return cb(err) if err
       @salt = salt
       bcrypt.hash @password, @salt, (err, hash) =>
-        return callback(err) if err
+        return cb(err) if err
         @password = hash
-        callback()
+        cb()
 
 module.exports = User
