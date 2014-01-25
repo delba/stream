@@ -35,7 +35,7 @@
   <script type="text/javascript" src="/javascripts/jquery.fitvids.js"></script>
   <script type="text/javascript">
     $('#videos a').hover(function() {
-      $(this).find('h2').toggleClass('overlay');
+      $(this).toggleClass('overlay');
     });
   </script>
   </body>

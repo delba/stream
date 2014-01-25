@@ -72,7 +72,7 @@ header form {
   transition: opacity 200ms;
 }
 
-#videos h2.overlay {
+#videos .overlay h2 {
   opacity: 1;
 }
 
