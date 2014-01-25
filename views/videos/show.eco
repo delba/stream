@@ -14,8 +14,8 @@
           <a href="/logout">logout</a>
         <% else: %>
           <a href="/">all videos</a>&emsp;
-          <a href="/register">register</a>
-          <a href="/login">login</a>&emsp;
+          <a href="/register">register</a>&emsp;
+          <a href="/login">login</a>
         <% end %>
       </p>
     </header>
