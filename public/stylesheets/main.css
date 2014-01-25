@@ -59,7 +59,7 @@ header form {
 }
 
 #videos h2 {
-  display: none;
+  opacity: 0;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
   margin: 0;
@@ -68,6 +68,12 @@ header form {
   left: 0;
   right: 0;
   bottom: 3px; /* hack */
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+
+#videos h2.overlay {
+  opacity: 1;
 }
 
 #videos h2 span {
