@@ -20,8 +20,8 @@
       <h2>Submit a Video</h2>
       <form action="/" method="post" id="new_video">
         <input type="hidden" name="_csrf" value='<%= @_csrf %>' />
-        <input type="text" name="url" placeholder="Enter an url&hellip;" autofocus />
-        <input type="submit" value="Submit" />
+        <p><input type="text" name="url" placeholder="Enter an url&hellip;" autofocus /></p>
+        <p><input type="submit" value="Submit" /></p>
       </form>
     </section>
 
