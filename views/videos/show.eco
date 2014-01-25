@@ -7,11 +7,13 @@
   <body>
     <header>
       <h1><a href="/">Home</a></h1>
-      <% if @current_user: %>
-        <p class="user"><a href="/new">submit a video</a>&emsp;<a href="/logout">logout</a></p>
-      <% else: %>
-        <p class="user"><a href="/login">login</a> / <a href="/register">register</a></p>
-      <% end %>
+      <p class="user">
+        <% if @current_user: %>
+          <a href="/new">submit a video</a>&emsp;<a href="/logout">logout</a>
+        <% else: %>
+          <a href="/login">login</a>&emsp;<a href="/register">register</a>
+        <% end %>
+      </p>
     </header>
 
     <section id="videos">
