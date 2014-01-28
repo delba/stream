@@ -1,6 +1,7 @@
 body {
   font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
   color: #444;
+  -webkit-font-smoothing: antialiased;
   padding: 0 5.555%;
   margin: 0 auto;
 }
