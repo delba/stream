@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Viddit</title>
+    <title><%= @video.title %> · <%= @video.author_name %></title>
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
