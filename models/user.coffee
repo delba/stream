@@ -4,58 +4,58 @@ redis  = require 'redis'
 client = redis.createClient()
 
 class User
-  @getByName: (name, cb) ->
+  @getByName: (name, fn) ->
     @getId name, (err, id) =>
-      return cb(err) if err
-      @get id, cb
+      return fn(err) if err
+      @get id, fn
 
-  @getId: (name, cb) ->
-    client.get "users:id:#{name}", cb
+  @getId: (name, fn) ->
+    client.get "users:id:#{name}", fn
 
-  @get: (id, cb) ->
+  @get: (id, fn) ->
     client.hgetall "users:#{id}", (err, user) ->
-      return cb(err) if err
-      cb(null, new User(user))
+      return fn(err) if err
+      fn(null, new User(user))
 
-  @authenticate: (name, password, cb) ->
+  @authenticate: (name, password, fn) ->
     @getByName name, (err, user) ->
-      return cb(err) if err
-      return cb() unless user.id
+      return fn(err) if err
+      return fn() unless user.id
       bcrypt.hash password, user.salt, (err, hash) ->
-        return cb(err) if err
+        return fn(err) if err
         if hash is user.password
-          return cb(null, user)
-        cb()
+          return fn(null, user)
+        fn()
 
   constructor: (attributes) ->
     for key, value of attributes
       this[key] = value
 
-  save: (cb) ->
+  save: (fn) ->
     if @id
-      @update(cb)
+      @update(fn)
     else
       client.incr 'users:uid', (err, id) =>
-        return cb(err) if err
+        return fn(err) if err
         @id = id
         @hashPassword (err) =>
-          return cb(err) if err
-          @update(cb)
+          return fn(err) if err
+          @update(fn)
 
-  update: (cb) ->
+  update: (fn) ->
     client.set "users:id:#{@name}", @id, (err, res) =>
-      return cb(err) if err
+      return fn(err) if err
       client.hmset "users:#{@id}", this, (err, res) =>
-        return cb(err) if err
-        cb(null, this)
+        return fn(err) if err
+        fn(null, this)
 
-  hashPassword: (cb) ->
+  hashPassword: (fn) ->
     bcrypt.genSalt 12, (err, salt) =>
-      return cb(err) if err
+      return fn(err) if err
       @salt = salt
       bcrypt.hash @password, @salt, (err, hash) =>
-        return cb(err) if err
+        return fn(err) if err
         @password = hash
-        cb()
+        fn()
 
 module.exports = User
