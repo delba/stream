@@ -15,7 +15,9 @@ exports.new = (req, res) ->
 exports.create = (req, res) ->
   url = req.body.url
 
-  Video.find_or_create_by_url url, (err, data) ->
+  video = new Video(url: url)
+
+  video.save (err, data) ->
     throw err if err
 
     res.redirect "/#{data.id}"
@@ -23,7 +25,6 @@ exports.create = (req, res) ->
 exports.show = (req, res) ->
   id = req.params.id
 
-  Video.find req.params.id, (err, video) ->
+  Video.get id, (err, video) ->
     throw err if err
-
     res.render 'videos/show', { video }
