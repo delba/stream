@@ -32,7 +32,5 @@
   <script type="text/javascript">
     $('#videos').fitVids();
   </script>
-  <script type="text/javascript" src="/javascripts/froogaloop.js"></script>
-  <script type="text/javascript" src="/javascripts/main.js"></script>
   </body>
 </html>
