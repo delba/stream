@@ -8,6 +8,7 @@
     <header>
       <h1><a href="/">Home</a></h1>
       <p class="user">
+          <a href="#" class="selected"><%= @video.title %></a>&emsp;
         <% if @current_user: %>
           <a href="/">all videos</a>&emsp;
           <a href="/new">submit a video</a>&emsp;
